@@ -4,10 +4,7 @@
 use App\Http\Controllers\ProductoControl;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\CarritoController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PaypalController;
