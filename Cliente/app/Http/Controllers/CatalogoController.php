@@ -8,8 +8,17 @@ use App\Models\Categoria;
 
 class CatalogoController extends Controller
 {
-    public function listado($categoria)
-    {
+    public function listado($categoria = null)
+{
+    if (!$categoria) {
+        // Mostrar todos los productos si no se especifica categoría
+        $productos = Producto::with('categoria')->get(); // Corregido $producto a $productos
+        return view('catalogo.listado', [
+            'productos' => $productos,
+            'categoriaBD' => (object)['nombre' => 'Todos los productos']
+        ]);
+    }
+
         // Buscar la categoría en la base de datos
         $categoriaBD = Categoria::where('nombre', $categoria)->first();
 
@@ -25,5 +34,4 @@ class CatalogoController extends Controller
         return view('catalogo.listado', compact('productos', 'categoriaBD'));
     }
 }
-
 

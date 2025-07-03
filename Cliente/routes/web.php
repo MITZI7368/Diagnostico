@@ -4,15 +4,19 @@
 use App\Http\Controllers\ProductoControl;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\CarritoController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PedidoController as ControllersPedidoController;
 use App\Models\Pedido;
+use App\Http\Controllers\ContactoController;
 
 Route::get('/', function () {
-    return redirect()->route('catalogo.listado');
+    return redirect()->route('dashboard.index');
 });
 // Route::get('/dashboard', function () {
 //     return view('dashboard.index');
@@ -32,9 +36,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Vistas estáticas
 Route::view('/plantilla', 'base.plantilla');
 
+Route::post('/contacto', [ContactoController::class, 'store'])->name('contacto.store');
 
 // Catálogo (CLIENTES)
-Route::get('/admin/productos', [ProductoControl::class, 'listaradmin'])->name('catalogo.listado');
+Route::get('/admin/productos', [ProductoControl::class, 'listaradmin'])->name('admin.productos');
 Route::get('/producto/{id}', [ProductoControl::class, 'detalle'])->name('producto.detalle');
 
 
@@ -59,7 +64,7 @@ Route::post('/paypal/checkout', [PaypalController::class, 'checkout'])->name('pa
 Route::get('/paypal/success', [PaypalController::class, 'success'])->name('paypal.success');
 Route::get('/paypal/cancel', [PaypalController::class, 'cancel'])->name('paypal.cancel');
 
-Route::get('/catalogo/{categoria}', [App\Http\Controllers\CatalogoController::class, 'listado'])->name('catalogo.listado');
+Route::get('/catalogo/{categoria?}', [App\Http\Controllers\CatalogoController::class, 'listado'])->name('catalogo.listado');
 
 
 
