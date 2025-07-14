@@ -14,6 +14,7 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PedidoController as ControllersPedidoController;
 use App\Models\Pedido;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\ResenaController;
 
 Route::get('/', function () {
     return redirect()->route('dashboard.index');
@@ -84,3 +85,6 @@ Route::get('/test-ssl', function() {
         return "Error SSL: " . $e->getMessage();
     }
 });
+ 
+Route::post('/resenas', [ResenaController::class, 'store'])->middleware('auth');
+Route::delete('/resenas/{id}', [ResenaController::class, 'destroy'])->name('resenas.destroy')->middleware('auth');

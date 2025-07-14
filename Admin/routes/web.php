@@ -53,8 +53,8 @@ Route::resource('clientes', ClientesControl::class);
 // Registro de un administrador
 Route::get('/registro', function () {
     DB::table('administradores')->insert([
-        'nombre' => 'Jaime Kael Farias',
-        'usuario' => 'JAI',
+        'nombre' => 'MITZI ROSAS',
+        'usuario' => 'MIT',
         'password' => Hash::make('utj'),
         'imagen_perfil' => 'administradores/admin_default.png',
         'rol' => 'admin',

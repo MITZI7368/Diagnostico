@@ -42,4 +42,9 @@ class Producto extends Model
     {
         return $this->belongsTo(Proveedor::class);
     }
+
+    public function resenas()
+{
+    return $this->hasMany(Resena::class);
+}
 }

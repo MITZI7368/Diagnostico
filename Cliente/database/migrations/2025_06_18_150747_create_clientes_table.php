@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('contraseña');
             $table->text('direccion')->nullable();
-            $table->enum('estado', ['activo', 'inactivo'])->default('activo');
+            $table->enum('estado', allowed: ['activo', 'inactivo'])->default('activo');
             $table->string('imagen')->nullable();
             $table->timestamps();
         });
