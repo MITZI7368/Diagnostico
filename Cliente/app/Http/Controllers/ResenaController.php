@@ -11,14 +11,14 @@ class ResenaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'productos_id' => 'required|exists:productos,id',
+            'producto_id' => 'required|exists:producto,id',
             'comentario' => 'required|string',
             'calificacion' => 'required|integer|min:1|max:5',
         ]);
 
         Resena::updateOrCreate(
             [
-                'productos_id' => $request->productos_id,
+                'producto_id' => $request->producto_id,
                 'clientes_id' => auth()->id(),
             ],
             [

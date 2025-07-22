@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         return Auth::attempt([
             'email' => $request->email,
-            'password' => $request->contraseña  // Make sure this matches your form field name
+            'password' => $request->contraseña  
         ]);
     }
 
@@ -36,9 +36,9 @@ class LoginController extends Controller
             return redirect()->intended('/admin/productos');
         }
 
-        return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
-        ])->withInput();
+        // return back()->withErrors([
+        //     'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+        // ])->withInput();
     }
 
     public function logout(Request $request)

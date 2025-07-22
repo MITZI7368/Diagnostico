@@ -70,7 +70,7 @@
                             
                             <p class="text-sm text-gray-600 text-center">
                                 ¿No tienes cuenta? 
-                                <a href="{{ route('login') }}" class="text-blue-700 hover:underline font-medium">
+                                <a href="{{ route('registro') }}" class="text-blue-700 hover:underline font-medium">
                                     Regístrate aquí
                                 </a>
                             </p>

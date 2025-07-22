@@ -54,7 +54,7 @@
 </div>
 
    @php
-    $miResena = $producto->resenas->where('cliente_id', auth()->id())->first();
+    $miResena = $producto->resenas->where('clientes_id', auth()->id())->first();
 @endphp
 
 @if(Auth::check())
@@ -98,7 +98,7 @@
 
 @forelse($producto->resenas as $resena)
     <div class="mb-4 border-b pb-2">
-        <strong>{{ $resena->cliente->name }}</strong>
+<strong>{{ $resena->cliente?->nombre ?? 'Usuario desconocido' }}</strong>
         <br>
         <div class="text-yellow-500">
             @for($i = 1; $i <= 5; $i++)
@@ -110,7 +110,7 @@
             @endfor
         </div>
         <p>{{ $resena->comentario }}</p>
-        <small class="text-gray-600">{{ $resena->created_at->format('d/m/Y') }}</small>
+        <small class="text-gray-600">{{ $resena->created_at?->format('d/m/Y') }}</small>
     </div>
 @empty
     <p>No hay reseñas aún.</p>

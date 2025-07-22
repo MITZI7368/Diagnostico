@@ -10,8 +10,8 @@ return new class extends Migration {
         Schema::create('resenas', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('productos_id')
-                ->constrained('productos')
+            $table->foreignId('producto_id')
+                ->constrained('producto')
                 ->onDelete('cascade');
 
             $table->foreignId('clientes_id')
@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->unsignedTinyInteger('calificacion');
             $table->timestamps();
 
-            $table->unique(['producto_id', 'clientes_id']);
+            $table->unique(['producto_id', 'cliente_id']);
         });
     }
 
